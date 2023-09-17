@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230816 as build
+FROM ubuntu:22.04 as build
 
 ARG gpg_key_url=https://dl.modular.com/bBNWiLZX5igwHXeu/installer/gpg.0E4925737A3895AD.key
 ARG keyring_location=/usr/share/keyrings/modular-installer-archive-keyring.gpg
@@ -16,7 +16,8 @@ RUN curl -1sLf ${installer_url} > /etc/apt/sources.list.d/modular-installer.list
 
 RUN apt-get update && \
     apt-get install -y \
-    modular
+    modular \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN modular auth $keyring_location
 
