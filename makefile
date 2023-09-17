@@ -1,6 +1,9 @@
 build:
 	@docker build --label mojo --tag mojo:v1 --no-cache --rm ./mojo/ubuntu_2204_v1
 
+build_to_push:
+	@docker build --label mojo --tag abequie/mojo:latest --no-cache --rm ./mojo/ubuntu_2204_v1
+
 run:
 	@docker run --rm -it --name mojo --volume $(PWD)/examples:/home/mojo/examples mojo:v1
 
