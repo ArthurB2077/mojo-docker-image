@@ -18,3 +18,12 @@ build_to_push_mojo_bullseye_slim:
 
 run_mojo_bullseye_slim:
 	@docker run --rm -it --name mojo_bullseye_slim --volume $(PWD)/examples:/home/mojo/examples mojo_bullseye_slim:v1
+
+# build_mojo_alpine_318:
+# 	@docker build --label mojo_alpine_318 --tag mojo_alpine_318:v1 --no-cache --rm ./mojo/alpine_318
+
+# build_to_push_mojo_alpine_318:
+# 	@docker build --label mojo_alpine_318 --tag abequie/mojo_alpine_318:v1 --no-cache --rm ./mojo/alpine_318
+
+# run_mojo_alpine_318:
+# 	@docker run --rm -it --name mojo_alpine_318 --volume $(PWD)/examples:/home/mojo/examples mojo_alpine_318:v1
