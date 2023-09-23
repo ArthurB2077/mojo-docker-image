@@ -1,7 +1,7 @@
 FROM debian:bullseye-slim as builder
 
 ARG gpg_key_url=https://dl.modular.com/bBNWiLZX5igwHXeu/installer/gpg.0E4925737A3895AD.key
-ARG installer_url=https://dl.modular.com/bBNWiLZX5igwHXeu/installer/config.deb.txt?distro=ubuntu&codename=jammy
+ARG installer_url=https://dl.modular.com/bBNWiLZX5igwHXeu/installer/config.deb.txt?distro=debian&codename=bullseye
 ARG keyring_location=/usr/share/keyrings/modular-installer-archive-keyring.gpg
 ARG default_user=mojo
 
@@ -10,6 +10,7 @@ RUN apt-get update \
     apt-transport-https \
     curl \
     gnupg \
+    libedit2 \
     && curl -1sLf ${gpg_key_url} | gpg --dearmor >> ${keyring_location} \
     && curl -1sLf ${installer_url} > /etc/apt/sources.list.d/modular-installer.list \
     && apt-get update \

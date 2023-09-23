@@ -10,6 +10,7 @@ RUN apt-get update \
     apt-transport-https \
     curl \
     gnupg \
+    libedit2 \
     && curl -1sLf ${gpg_key_url} | gpg --dearmor >> ${keyring_location} \
     && curl -1sLf ${installer_url} > /etc/apt/sources.list.d/modular-installer.list \
     && apt-get update \
