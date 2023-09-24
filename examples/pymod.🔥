@@ -1,0 +1,15 @@
+from python import Python
+from python.object import PythonObject
+
+# Test if python insyall allow to use imported modules
+# You should have install numpy with python -m pip install numpy
+fn main():
+    var np: PythonObject = None
+    try:
+        np = Python.import_module("numpy")
+        # Now use numpy as if writing in Python
+        let array: PythonObject = np.array([1, 2, 3])
+        print(array)
+    except e:
+        print("Failed to import numpy:", e.value)
+        print("\nDid you try to run import_deps.sh before using numpy module ?")
