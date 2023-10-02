@@ -8,10 +8,12 @@ ARG default_user=mojo
 RUN apt-get update && \
     apt-get install -y \
     apt-transport-https \
-    wget
+    wget \
+    xz-utils \
+    zlib1g-dev \
+    build-essential
 
-RUN python3 --version | grep -q 'Python 3.10' || \
-    (apt-get remove -y python3 \
+RUN apt-get remove -y python3 \
     && apt-get update \
     && wget -c https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz \
     && tar -Jxvf Python-3.10.0.tar.xz \
@@ -19,11 +21,11 @@ RUN python3 --version | grep -q 'Python 3.10' || \
     && ./configure --enable-optimizations \
     && make altinstall \
     && update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1 \
+    && update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3.10 1 \
+    && update-alternatives --set python /usr/local/bin/python3.10 \
     && update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 1 \
     && cd .. \
-    rm -rf Python-3.10.0.tar.xz Python-3.10.0)
-
-
+    && rm -rf Python-3.10.0.tar.xz Python-3.10.0
 
 RUN apt-get update && \
     apt-get install -y \
@@ -51,5 +53,5 @@ WORKDIR /home/${default_user}
 
 USER ${default_user}
 
-# RUN modular auth $keyring_location \
-#     && modular install mojo
+RUN modular auth $keyring_location \
+    && modular install mojo

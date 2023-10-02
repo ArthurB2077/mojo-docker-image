@@ -18,6 +18,7 @@ RUN apt-get update && \
     gnupg \
     libedit2 \
     python-is-python3 \
+    python3.10-venv \
     && curl -1sLf ${gpg_key_url} | gpg --dearmor >> ${keyring_location} \
     && curl -1sLf ${installer_url} > /etc/apt/sources.list.d/modular-installer.list \
     && apt-get update \
