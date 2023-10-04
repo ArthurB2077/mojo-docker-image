@@ -10,6 +10,9 @@ build_locally_mu22:
 start_mu22:
 	@docker run -d -it --name mojo --restart=always --volume $(PWD)/examples:/home/mojo/examples abequie/mojo:latest tail -f /dev/null
 
+start_locally_mu22:
+	@docker run -d -it --name mojo --restart=always --volume $(PWD)/examples:/home/mojo/examples mojo:latest tail -f /dev/null
+
 run_hello_mu22:
 	@docker exec mojo mojo examples/hello.🔥
 
@@ -31,6 +34,9 @@ build_locally_mbs:
 
 start_mbs:
 	@docker run -d -it --name mojo_bullseye_slim --restart=always --volume $(PWD)/examples:/home/mojo/examples abequie/mojo:bullseye_slim tail -f /dev/null
+
+start_locally_mbs:
+	@docker run -d -it --name mojo_bullseye_slim --restart=always --volume $(PWD)/examples:/home/mojo/examples mojo:bullseye_slim tail -f /dev/null
 
 run_hello_mbs:
 	@docker exec mojo_bullseye_slim mojo ./examples/hello.🔥
