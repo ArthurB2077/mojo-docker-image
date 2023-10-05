@@ -42,7 +42,7 @@ run_hello_mbs:
 	@docker exec mojo_bullseye_slim mojo ./examples/hello.🔥
 
 run_check_python_module_mbs:
-	@docker exec mojo /bin/bash -c "./examples/import_deps.sh"
+	@docker exec mojo_bullseye_slim /bin/bash -c "./examples/import_deps.sh"
 	@docker exec mojo_bullseye_slim mojo ./examples/pymod.🔥
 
 push_mbs:
