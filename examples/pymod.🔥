@@ -11,5 +11,5 @@ fn main():
         let array: PythonObject = np.array([1, 2, 3])
         print(array)
     except e:
-        print("Failed to import numpy:", e.value)
+        print("Failed to import numpy:", e)
         print("\nDid you try to run import_deps.sh before using numpy module ?")
